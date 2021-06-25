@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    image: "postgres:13"
+    container_name: "online-store-db"
+    env_file:
+      - .env
+    environment:
+      ONLINE_STORE_DBDATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    volumes:
+      - online_store_dbdata:/var/lib/postgresql/data
+    restart: always
+volumes:
+  online_store_dbdata:
